@@ -37,14 +37,15 @@
         var dataset = [];
         var openUrl =
             "https://cloud.culture.tw/frontsite/trans/SearchShowAction.do?method=doFindTypeJ&category=6"
-        fetch(openUrl)
+        fetch(openUrl, { method: 'get' })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
                 return response.json();
             })
-            .then(dataset => {
+            .then(data => {
+                dataset = data;
                 addNewData(dataset);
             })
             .catch(error => {
